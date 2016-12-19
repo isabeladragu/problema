@@ -47,9 +47,12 @@ int main()
 {
     int nr, dimensiune;
     BitSet x;
-
+    cout<<"Inceperea programului"<<endl;
+    cout<<endl;
+    cout<<"_________________________";
     cout << "Introduceti numarul de elemente: ";
     cin >> dimensiune;
+    cout<<"_________________________";
     for(int i=0; i<dimensiune; i++)
     {
         cout << "Introduceti elementele: ";
@@ -57,7 +60,7 @@ int main()
         x.add(nr);
     }
     x.toString();
-
+    cout<<"__________________________";
     cout << endl << "Introduceti elementul cautat:";
     cin>>nr;
     if(x.contains(nr))
@@ -66,6 +69,7 @@ int main()
         cout << "Elementul nu exista!";
 
 
+    cout<<"___________________________";
     cout << endl;
     cout << "Introduceti elementul de eliminat: ";
     cin >> nr;
