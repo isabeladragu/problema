@@ -1,0 +1,79 @@
+#include <iostream>
+#include<bitset>
+
+using namespace std;
+
+class BitSet {
+    char v[10];
+public:
+    BitSet ()
+    {
+        for(int i=0; i<10; i++)
+            v[i] = 0;
+    }
+    void add (int x)
+    {
+        int index = x/8;
+        char q = v[index] | (1 << (7-x%8));
+        v[index] = q;
+    }
+
+    bool contains (int x)
+    {
+        char q = 1 << (7-x%8);
+        for (int i=0; i<10; i++)
+            if(v[i] & q)
+                return true;
+        return false;
+    }
+
+    void elimina (int x)
+    {
+        v[x/8] = v[x/8] & ~ (1 << (7-x%8));
+    }
+
+    void toString ()
+    {
+        for(int i=0; i<9; i++)
+        {
+            if(contains(i))
+                cout << i << " ";
+        }
+    }
+
+};
+
+int main()
+{
+    int nr, dimensiune;
+    BitSet x;
+
+    cout << "Introduceti numarul de elemente: ";
+    cin >> dimensiune;
+    for(int i=0; i<dimensiune; i++)
+    {
+        cout << "Introduceti elementele: ";
+        cin >> nr;
+        x.add(nr);
+    }
+    x.toString();
+
+    cout << endl << "Introduceti elementul cautat:";
+    cin>>nr;
+    if(x.contains(nr))
+        cout << "Elementul exista!";
+    else
+        cout << "Elementul nu exista!";
+
+
+    cout << endl;
+    cout << "Introduceti elementul de eliminat: ";
+    cin >> nr;
+    x.elimina(nr);
+    cout << endl;
+    x.toString();
+
+
+
+    return 0;
+}
