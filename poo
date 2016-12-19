@@ -4,32 +4,32 @@
 using namespace std;
 
 class BitSet {
-    char v[10];
+    char a[10];
 public:
     BitSet ()
     {
         for(int i=0; i<10; i++)
-            v[i] = 0;
+            a[i] = 0;
     }
     void add (int x)
     {
         int index = x/8;
-        char q = v[index] | (1 << (7-x%8));
-        v[index] = q;
+        char q = a[index] | (1 << (7-x%8));
+        a[index] = q;
     }
 
     bool contains (int x)
     {
         char q = 1 << (7-x%8);
         for (int i=0; i<10; i++)
-            if(v[i] & q)
+            if(a[i] & q)
                 return true;
         return false;
     }
 
     void elimina (int x)
     {
-        v[x/8] = v[x/8] & ~ (1 << (7-x%8));
+        a[x/8] = a[x/8] & ~ (1 << (7-x%8));
     }
 
     void toString ()
